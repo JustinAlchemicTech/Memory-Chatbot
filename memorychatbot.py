@@ -39,7 +39,7 @@ def new_chat():
     st.session_state["generated"] = []
     st.session_state["past"] = []
     st.session_state["input"] = ""
-    st.session_state.entity_memory.store = {}
+    st.session_state.entity_memory.memory = {}
     st.session_state.entity_memory.buffer.clear()
 
 # Set up the App Layout and widget to accept secret API key
