@@ -46,9 +46,9 @@ def new_chat():
 st.title("J.A.R.V.I.S")
 st.markdown(
     '''
-    > :black[**A Chatbot that remembers,**  *powered by -  [LangChain]('https://langchain.readthedocs.io/en/latest/modules/memory.html#memory') +
+    > :black[**JARVIS by Alchemic Technology,**  *powered by -  [LangChain]('https://langchain.readthedocs.io/en/latest/modules/memory.html#memory') +
     [OpenAI]('https://platform.openai.com/docs/models/gpt-3-5') +
-    [Streamlit]('https://streamlit.io') + [DataButton](https://www.databutton.io/)*]
+    [Streamlit]('https://streamlit.io')]
     ''')
 with st.sidebar.expander(" 🛠️ Settings ", expanded=False):
     if st.checkbox("Preview memory store"):
