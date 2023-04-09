@@ -43,7 +43,7 @@ def new_chat():
     st.session_state.entity_memory.buffer.clear()
 
 # Set up the App Layout and widget to accept secret API key
-st.title("🧠 Memory Bot 🤖")
+st.title("J.A.R.V.I.S")
 st.markdown(
     '''
     > :black[**A Chatbot that remembers,**  *powered by -  [LangChain]('https://langchain.readthedocs.io/en/latest/modules/memory.html#memory') +
