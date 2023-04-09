@@ -15,7 +15,7 @@ if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
 
 # Define Function
-def custom_css():
+def custom_css(css):
     st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
     <style>
         .stTextInput>div>div>input {
