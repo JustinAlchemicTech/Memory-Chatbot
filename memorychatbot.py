@@ -17,28 +17,29 @@ if "stored_session" not in st.session_state:
 # Define Function
 def custom_css(css):
     st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
-    custom_css("""
-        .stTextInput>div>div>input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            outline: none;
-        }
-        .stButton>button {
-            padding: 10px 20px;
-            background-color: #2e67ff;
-            border: none;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            outline: none;
-        }
-        .stButton>button:hover {
-            background-color: #1a47b7;
-        }
-    </style>
-    """, unsafe_allow_html=True)
+
+# Add the custom CSS to the Streamlit app
+custom_css("""
+    input.st-bb {
+        padding: 10px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 5px !important;
+        outline: none !important;
+    }
+    button.st-ij {
+        padding: 10px 20px !important;
+        background-color: #2e67ff !important;
+        border: none !important;
+        color: #fff !important;
+        font-size: 1rem !important;
+        cursor: pointer !important;
+        border-radius: 5px !important;
+        outline: none !important;
+    }
+    button.st-ij:hover {
+        background-color: #1a47b7 !important;
+    }
+""")
 
 def get_text():
     """
