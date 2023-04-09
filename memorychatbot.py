@@ -63,10 +63,11 @@ API= st.sidebar.text_input(":blue[Enter Your OPENAI API-KEY :]",
                               type="password")
 
 if API:
-    llm = OpenAI(temperature=0,
+    llm = OpenAI(temperature=0.25,
                  openai_api_key=API,
                  model_name=MODEL,
-                 verbose=False)
+                 verbose=False,
+                 max_tokens=3000)
 
     if 'entity_memory' not in st.session_state:
         st.session_state.entity_memory = ConversationEntityMemory(llm=llm, k=K)
