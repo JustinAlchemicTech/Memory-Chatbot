@@ -15,6 +15,31 @@ if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
 
 # Define Function
+def custom_css():
+    st.markdown("""
+    <style>
+        .stTextInput>div>div>input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .stButton>button {
+            padding: 10px 20px;
+            background-color: #2e67ff;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+        }
+        .stButton>button:hover {
+            background-color: #1a47b7;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
 def get_text():
     """
     Get the user input text.
@@ -95,20 +120,20 @@ else:
 st.sidebar.button("New Chat", on_click=new_chat, type='primary')
 
 # Get the user INPUT and RUN the chain. Also, store them
-user_input = get_text()
-if user_input:
-    output = Conversation.run(input=user_input)
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(output)
+user_input = st.text_input("Type your message:", value=st.session_state["input"], key="input")
+if st.button("Send"):
+    if user_input:
+        output = Conversation.run(input=user_input)
+        st.session_state.past.append(user_input)
+        st.session_state.generated.append(output)
 
 # Display the conversation history using an expander, and allow the user to download it.
-download_str = []
 with st.expander("Conversation", expanded=True):
     for i in range(len(st.session_state['generated']) - 1, -1, -1):
-        st.info(st.session_state["past"][i], icon="🧐")
-        st.success(st.session_state["generated"][i], icon="🤖")
-        download_str.append(st.session_state["past"][i])
-        download_str.append(st.session_state["generated"][i])
+        st.info(f"User: {st.session_state['past'][i]}", icon="🧐")
+        st.success(f"JARVIS: {st.session_state['generated'][i]}", icon="🤖")
+        download_str.append(st.session_state['past'][i])
+        download_str.append(st.session_state['generated'][i])
 
     download_str = '\n'.join(download_str)
     if download_str:
