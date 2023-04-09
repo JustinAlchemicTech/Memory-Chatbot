@@ -15,6 +15,7 @@ if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
 
 # Define Function
+custom_css()
 def custom_css():
     st.markdown("""
     <style>
@@ -128,6 +129,7 @@ if st.button("Send"):
         st.session_state.generated.append(output)
 
 # Display the conversation history using an expander, and allow the user to download it.
+download_str = []
 with st.expander("Conversation", expanded=True):
     for i in range(len(st.session_state['generated']) - 1, -1, -1):
         st.info(f"User: {st.session_state['past'][i]}", icon="🧐")
